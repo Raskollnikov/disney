@@ -27,6 +27,32 @@ async function fetchFromTMDB(url: URL, cacheTime?: number) {
   return data;
 }
 
+export async function getPopularMovies() {
+  const url = new URL("https://api.themoviedb.org/3/movie/popular");
+  const data = await fetchFromTMDB(url);
+
+  return data.results;
+}
+
+async function getTmdbId(url: URL, cacheTime?: number) {
+  const options: RequestInit = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+    },
+    next: {
+      //
+      revalidate: cacheTime || 60 * 60 * 24,
+    },
+  };
+
+  const response = await fetch(url.toString(), options);
+  const data = await response.json();
+
+  return data;
+}
+
 export async function getSearchedMovies(term: string) {
   const url = new URL("https://api.themoviedb.org/3/search/movie");
 
@@ -76,52 +102,24 @@ export async function getTopRatedMovies() {
   return data.results;
 }
 
-export async function getPopularMovies() {
-  const url = new URL("https://api.themoviedb.org/3/movie/popular");
-  const data = await fetchFromTMDB(url);
-
-  return data.results;
-}
-
 export async function getData(id: any) {
   const url = new URL(
     `https://api.themoviedb.org/3/movie/${id}?language=en-US`
   );
-  const options: RequestInit = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
-    },
-  };
-
-  try {
-    const response = await fetch(url.toString(), options);
-    const responseData = await response.json();
-    return responseData;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return null;
-  }
+  const data = await getTmdbId(url);
+  return data;
 }
 
 export async function getImages(id: any) {
   const url = new URL(`https://api.themoviedb.org/3/movie/${id}/images`);
+  const data = await getTmdbId(url);
+  return data;
+}
 
-  const options: RequestInit = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
-    },
-  };
-
-  try {
-    const response = await fetch(url.toString(), options);
-    const responseData = await response.json();
-    return responseData;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return null;
-  }
+export async function getVideos(id: any) {
+  const url = new URL(
+    `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`
+  );
+  const data = await getTmdbId(url);
+  return data;
 }
