@@ -123,3 +123,19 @@ export async function getVideos(id: any) {
   const data = await getTmdbId(url);
   return data;
 }
+
+export async function getSimilarMovies(id: any) {
+  const url = new URL(
+    `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`
+  );
+  const data = await getTmdbId(url);
+  return data;
+}
+
+export async function getReviews(id: any) {
+  const url = new URL(
+    `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`
+  );
+  const data = await getTmdbId(url);
+  return data;
+}
