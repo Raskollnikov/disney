@@ -30,3 +30,33 @@ export type Genre = {
 export type Genres = {
   genres: Genre[];
 };
+
+export type GenreInfo = {
+  id: number;
+  name: string;
+};
+export type Companies = {
+  id: number;
+  logo_path: string;
+  name: string;
+  origin_country: string;
+};
+
+export type Countries = {
+  iso_3166_1: string;
+  name: string;
+};
+export type MovieReview = {
+  author: string;
+  author_details: {
+    name: string;
+    username: string;
+    avatar_path: string | null | any;
+    rating: number;
+  };
+  content: string;
+  created_at: string;
+  id: string;
+  updated_at: string;
+  url: string;
+};

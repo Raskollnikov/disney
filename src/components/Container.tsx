@@ -1,10 +1,8 @@
 import { getImages } from "@/lib/getMovies";
-import React from "react";
-import Image from "next/image";
 import getImagePath from "@/lib/getImagePath";
 import Video from "./Video";
 
-export default async function Container({ id }) {
+export default async function Container({ id }: { id: Number }) {
   const images = await getImages(id);
   const singleImg = images.backdrops[0];
 

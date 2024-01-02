@@ -1,27 +1,22 @@
-// "use client";
 import { getData, getReviews, getSimilarMovies } from "@/lib/getMovies";
 import DataClient from "./DataClient";
 import { FaImdb } from "react-icons/fa";
 import MoviesCarousel from "@/components/MoviesCarousel";
 import getImagePath from "@/lib/getImagePath";
 import Image from "next/image";
+import { GenreInfo, Companies, Countries, MovieReview } from "../../types";
 
-type Genre = {
-  id: number;
-  name: string;
-};
-
-export default async function DataUi({ id }) {
+export default async function DataUi({ id }: { id: Number | string }) {
   const data = await getData(id);
   const recomendations = await getSimilarMovies(id);
+
   const reviews = await getReviews(id);
-  console.log(reviews.results);
+
   const {
     genres,
     production_companies,
     overview,
     runtime,
-    popularity,
     release_date,
     revenue,
     spoken_languages,
@@ -57,7 +52,7 @@ export default async function DataUi({ id }) {
         <div className="flex gap-5">
           <div>genres:</div>
           <div>
-            {genres.map((each: Genre) => (
+            {genres.map((each: GenreInfo) => (
               <span className="mx-1" key={each.id}>
                 {each.name},
               </span>
@@ -72,7 +67,7 @@ export default async function DataUi({ id }) {
         <div className="flex gap-5">
           studios:
           <div>
-            {production_companies.map((each) => (
+            {production_companies.map((each: Companies) => (
               <span key={each.id}>{each.name}</span>
             ))}
           </div>
@@ -84,7 +79,7 @@ export default async function DataUi({ id }) {
         <div className="flex gap-5">
           country:
           <div>
-            {production_countries.map((each) => (
+            {production_countries.map((each: Countries) => (
               <span key={each.name}>{each.name} </span>
             ))}
           </div>
@@ -100,30 +95,36 @@ export default async function DataUi({ id }) {
         </div>
       </div>
       <div className="flex flex-col p-4 w-[100%] mt-10">
-        <MoviesCarousel
-          title="You May Also Like"
-          movies={recomendations.results}
-        />
+        {recomendations.results.length > 1 && (
+          <MoviesCarousel
+            title="You May Also Like"
+            movies={recomendations.results}
+          />
+        )}
       </div>
 
       <div className="w-[90%]">
         <div className="text-3xl">Reviews:</div>
         <div className="flex gap-4 flex-col mt-10">
-          {reviews.results.map((each) => (
-            <div key={each.id} className="flex gap-5 flex-col">
-              <div className="flex items-center gap-5">
-                <Image
-                  src={getImagePath(each.author_details.avatar_path)}
-                  width={50}
-                  height={50}
-                  alt={each.id}
-                  style={{ borderRadius: "50%" }}
-                />
-                <div className="text-xl">{each.author}</div>
+          {reviews.results.length > 1 ? (
+            reviews.results.map((each: MovieReview) => (
+              <div key={each.id} className="flex gap-5 flex-col">
+                <div className="flex items-center gap-5">
+                  <Image
+                    src={getImagePath(each.author_details.avatar_path)}
+                    width={50}
+                    height={50}
+                    alt={each.id}
+                    style={{ borderRadius: "50%" }}
+                  />
+                  <div className="text-xl">{each.author}</div>
+                </div>
+                <div className="w-[50%]">{each.content.slice(0, 200)}</div>
               </div>
-              <div className="w-[50%]">{each.content.slice(0, 200)}</div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <h1>No Comments</h1>
+          )}
         </div>
       </div>
     </div>

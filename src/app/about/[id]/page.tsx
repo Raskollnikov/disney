@@ -1,5 +1,5 @@
-import Container from "./Container";
-import DataUi from "./DataUi";
+import Container from "../../../components/Container";
+import DataUi from "../../../components/DataUi";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

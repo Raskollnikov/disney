@@ -121,7 +121,8 @@ export async function getVideos(id: any) {
     `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`
   );
   const data = await getTmdbId(url);
-  return data;
+  const filterTrailer = data.results.filter((each) => each.type === "Trailer"); // added to receive only Trailer
+  return filterTrailer;
 }
 
 export async function getSimilarMovies(id: any) {
