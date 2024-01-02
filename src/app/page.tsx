@@ -6,10 +6,12 @@ import {
   getTopRatedMovies,
   getUpcomingMovies,
 } from "@/lib/getMovies";
+
 export const metadata: Metadata = {
   title: "Best Movies",
   description: "top rated movies for free",
 };
+
 export default async function Home() {
   const upcomingMovies = await getUpcomingMovies();
   const topRatedMovies = await getTopRatedMovies();

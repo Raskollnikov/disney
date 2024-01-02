@@ -1,6 +1,4 @@
-import React from "react";
 import { Genres } from "../../types";
-import Link from "next/link";
 
 async function GenreDropdown() {
   const url = "https://api.themoviedb.org/3/genre/movie/list?language=en";

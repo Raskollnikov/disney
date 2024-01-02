@@ -60,3 +60,5 @@ export type MovieReview = {
   updated_at: string;
   url: string;
 };
+
+export type IdType = { id: number | string };
