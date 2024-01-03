@@ -18,7 +18,7 @@ export default async function Video({ id }: IdType) {
     <div className="w-full flex justify-center">
       {videos[0] ? (
         <div className="w-full flex justify-center gap-2  h-[60vh] object-cover pointer-events-none select-none mt-10 rounded-xl">
-          <div className="h-full flex flex-col cursor-pointer">
+          <div className="h-full hidden xl:flex flex-col cursor-pointer ">
             <Image
               src={getImagePath(imagePath)}
               width={250}
@@ -42,7 +42,7 @@ export default async function Video({ id }: IdType) {
         <div
           className={`w-full object-cover pointer-events-none select-none mt-10 rounded-xl  h-[60vh] justify-center text-white font-bold flex items-center gap-2 ${roboto_mono.className}`}
         >
-          <div className="h-full flex flex-col cursor-pointer  ">
+          <div className="h-full hidden  xl:flex xl:flex-col cursor-pointer  ">
             <Image
               src={getImagePath(imagePath)}
               width={250}
@@ -51,7 +51,7 @@ export default async function Video({ id }: IdType) {
               className=" h-[100%] object-contain"
             />
           </div>
-          <div className="text-5xl w-[50%] flex items-center justify-center">
+          <div className="text-5xl w-full xl:w-[50%] flex items-center justify-center">
             <ImageSlider id={id} />
           </div>
         </div>

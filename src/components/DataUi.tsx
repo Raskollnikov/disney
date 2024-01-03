@@ -27,18 +27,22 @@ export default async function DataUi({ id }: IdType) {
   return (
     <div className="text-white flex flex-col justify-center items-center max-w-[90%] my-2">
       <div className="w-[90%] flex flex-col gap-5 justify-center p-4">
-        <div className="flex w-full justify-between items-center  ">
+        <div className="flex w-full justify-between items-center">
           {" "}
           <div className="text-3xl">
-            {original_title} - {release_date.slice(0, 4)}
+            <span>{original_title}</span> -
+            <span>{release_date.slice(0, 4)}</span>{" "}
           </div>
           <DataClient />
         </div>
-        <div className="flex flex-col gap-3 ">
+        <div className="flex gap-3 flex-col">
           <div className="flex gap-2">
-            {spoken_languages.map((each: any) => (
-              <h1 key={each.name}>{each.name}</h1>
-            ))}
+            <span className="text-xl">available:</span>
+            <div className="flex gap-2 text-xl">
+              {spoken_languages.map((each: any) => (
+                <h1 key={each.name}>{each.name}</h1>
+              ))}
+            </div>
           </div>
           <div className="flex gap-2 items-center">
             <FaImdb color={"orange"} size={40} />
@@ -48,52 +52,72 @@ export default async function DataUi({ id }: IdType) {
         </div>
       </div>
 
-      <div className="mt-5 w-[90%] p-4">
-        <div className="flex gap-5">
-          <div>genres:</div>
+      <div className="mt-5 w-[90%] p-4 flex flex-col gap-3">
+        <div className="flex gap-3">
+          <div className="text-xl">genres:</div>
           <div>
             {genres.map((each: GenreInfo) => (
-              <span className="mx-1" key={each.id}>
+              <span
+                className="text-orange-400 mx-1 font-bold text-xl"
+                key={each.id}
+              >
                 {each.name},
               </span>
             ))}
           </div>
         </div>
 
-        <div className="flex gap-5">
+        <div className="flex gap-3 text-xl">
           release date:
-          <div>{release_date.slice(0, 4)}</div>
+          <div className="text-orange-400 mx-1 font-bold text-xl">
+            {release_date.slice(0, 4)}
+          </div>
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-3 text-xl">
           studios:
           <div>
             {production_companies.map((each: Companies) => (
-              <span key={each.id}>{each.name}</span>
+              <span
+                key={each.id}
+                className="text-orange-400 mx-1 font-bold text-xl"
+              >
+                {each.name}
+              </span>
             ))}
           </div>
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-3 text-xl">
           duration:
-          <div>{runtime}min</div>
+          <div className="text-orange-400 mx-1 font-bold text-xl">
+            {runtime}min
+          </div>
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-3 text-xl">
           country:
           <div>
             {production_countries.map((each: Countries) => (
-              <span key={each.name}>{each.name} </span>
+              <span
+                key={each.name}
+                className="text-orange-400 mx-1 font-bold text-xl"
+              >
+                {each.name}{" "}
+              </span>
             ))}
           </div>
         </div>
-        <div className="flex gap-5">
+        <div className="flex gap-3 text-xl">
           revenue:
-          <div>{revenue}$</div>
+          <div className="text-orange-400 mx-1 font-bold text-xl">
+            {revenue}$
+          </div>
         </div>
 
-        <div className="flex flex-col gap-5 mt-6">
+        <div className="flex flex-col gap-2 mt-6 text-xl">
           <div className="text-xl">overview</div>
-          <div className="w-[70%]">{overview}</div>
+          <div className="w-[90%]  my-3">{overview}</div>
         </div>
       </div>
+
       <div className="flex flex-col p-4 w-[100%] mt-10">
         {recomendations.results.length > 1 && (
           <MoviesCarousel
