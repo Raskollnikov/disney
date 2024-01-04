@@ -1,14 +1,35 @@
 "use client";
-
 import { FaHeartCirclePlus } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TbMessageReport } from "react-icons/tb";
+import { addMovie, removeItem } from "@/lib/redux/slices/FavoriteMovie";
+import { useDispatch, useSelector } from "react-redux";
 
-function DataClient() {
-  const [color, setColor] = useState("white");
+function DataClient({ data }) {
+  const dispatch = useDispatch();
+  const storedColor =
+    localStorage.getItem(`favoriteColor-${data.id}`) || "white";
+  const [color, setColor] = useState(storedColor);
+
+  const favoriteMovies = useSelector((store) => store.favorite.movies);
+  const isMovieInFavorites = favoriteMovies.some(
+    (movie) => movie.id === data.id
+  );
+
+  useEffect(() => {
+    setColor(isMovieInFavorites ? "red" : "white");
+  }, [isMovieInFavorites]);
 
   const handleClick = () => {
-    setColor((prevColor) => (prevColor === "white" ? "red" : "white"));
+    const newColor = color === "white" ? "red" : "white";
+    setColor(newColor);
+    localStorage.setItem(`favoriteColor-${data.id}`, newColor);
+
+    if (color === "white") {
+      dispatch(addMovie(data));
+    } else if (color === "red") {
+      dispatch(removeItem());
+    }
   };
 
   return (

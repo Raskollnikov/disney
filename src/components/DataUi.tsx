@@ -33,7 +33,7 @@ export default async function DataUi({ id }: IdType) {
             <span>{original_title}</span> -
             <span>{release_date.slice(0, 4)}</span>{" "}
           </div>
-          <DataClient />
+          <DataClient data={data} />
         </div>
         <div className="flex gap-3 flex-col">
           <div className="flex gap-2">

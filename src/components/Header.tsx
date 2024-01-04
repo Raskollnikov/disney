@@ -18,7 +18,13 @@ export default function Header() {
         />
       </Link>
       {/*  */}
-      <div className="flex space-x-2">
+
+      <div className="flex space-x-2 items-center">
+        {/* added */}
+        <div>
+          <Link href="/favorites">Faves</Link>
+        </div>
+        {/* added */}
         <GenreDropdown />
 
         <SearchInput />

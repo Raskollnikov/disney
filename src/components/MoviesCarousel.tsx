@@ -1,10 +1,9 @@
-import React from "react";
 import { Movie } from "../../types";
 import MovieCard from "./MovieCard";
 
 type Props = {
   title?: string;
-  movies?: Movie[];
+  movies?: Movie[] | any;
   isVertical?: boolean;
 };
 
