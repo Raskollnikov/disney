@@ -67,7 +67,7 @@ export type MovieReview = {
   url: string;
 };
 
-export type IdType = { id: number | string };
+export type IdType = { id: number | string | Number };
 
 export type MovieType = {
   adult: boolean;
