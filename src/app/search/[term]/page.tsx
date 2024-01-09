@@ -2,6 +2,12 @@ import MoviesCarousel from "@/components/MoviesCarousel";
 import { getPopularMovies, getSearchedMovies } from "@/lib/getMovies";
 import { notFound } from "next/navigation";
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "search result",
+  description: "search result for movie",
+};
 
 type Props = {
   params: {
