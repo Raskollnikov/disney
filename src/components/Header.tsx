@@ -4,6 +4,7 @@ import Link from "next/link";
 import SearchInput from "./SearchInput";
 import GenreDropdown from "./GenreDropdown";
 
+import FavoritesPlacehorder from "./FavoritesPlacehorder";
 export default function Header() {
   return (
     <header className="fixed w-full z-20 flex top-0 items-center p-5 bg-gradient-to-t justify-between from-gray-200/0 via-gray-900/25 to-gray-900">
@@ -13,17 +14,18 @@ export default function Header() {
           width={120}
           height={100}
           alt="Disney Logo"
-          className={"cursor-pointer invert-0 dark:invert"}
+          className={"cursor-pointer invert dark:invert "}
           // invert
         />
       </Link>
       {/*  */}
 
-      <div className="flex space-x-2 items-center">
+      <div className="flex space-x-4 items-center">
         {/* added */}
-        <div>
-          <Link href="/favorites">Faves</Link>
-        </div>
+
+        <Link href="/favorites">
+          <FavoritesPlacehorder />
+        </Link>
         {/* added */}
         <GenreDropdown />
 

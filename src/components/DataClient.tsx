@@ -4,16 +4,18 @@ import { useState, useEffect } from "react";
 import { TbMessageReport } from "react-icons/tb";
 import { addMovie, removeItem } from "@/lib/redux/slices/FavoriteMovie";
 import { useDispatch, useSelector } from "react-redux";
+import { MovieType } from "../../types";
 
-function DataClient({ data }) {
+function DataClient({ data }: { data: MovieType }) {
   const dispatch = useDispatch();
   const storedColor =
     localStorage.getItem(`favoriteColor-${data.id}`) || "white";
   const [color, setColor] = useState(storedColor);
 
-  const favoriteMovies = useSelector((store) => store.favorite.movies);
+  const favoriteMovies = useSelector((store: any) => store.favorite.movies);
+
   const isMovieInFavorites = favoriteMovies.some(
-    (movie) => movie.id === data.id
+    (movie: MovieType) => movie.id === data.id
   );
 
   useEffect(() => {

@@ -10,7 +10,7 @@ type Props = {
 export default function MoviesCarousel({ title, movies, isVertical }: Props) {
   return (
     <div className="z-50">
-      <h2 className="text-xl font-bold px-10 py-2 text-black dark:text-white">
+      <h2 className="text-xl font-bold px-10 py-2 text-white dark:text-white">
         {title}
       </h2>
       <div
@@ -19,7 +19,7 @@ export default function MoviesCarousel({ title, movies, isVertical }: Props) {
         } flex space-x-4 overflow-scroll px-5 lg:px-10 py-5 scrollbar-hide`}
       >
         {isVertical
-          ? movies?.map((movie) => (
+          ? movies?.map((movie: Movie) => (
               <div
                 key={movie.id}
                 className={
@@ -37,7 +37,9 @@ export default function MoviesCarousel({ title, movies, isVertical }: Props) {
                 </div>
               </div>
             ))
-          : movies?.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+          : movies?.map((movie: Movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
       </div>
     </div>
   );

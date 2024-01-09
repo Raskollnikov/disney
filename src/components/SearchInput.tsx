@@ -1,16 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import * as z from "zod";
 
-const formSchema = z.object({
-  input: z.string().min(2).max(50),
-});
 export default function SearchInput() {
   const router = useRouter();
   const [data, setData] = useState("");
-  const handleClick = (e: any) => {
+  const handleClick = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!data) return;
     router.push(`/search/${data}`);
   };
   return (
@@ -22,7 +19,7 @@ export default function SearchInput() {
         maxLength={20}
         value={data}
         name="data"
-        className="p-2 rounded-md bg-white dark:bg-[#111112] text-white"
+        className="p-2 rounded-md bg-[#1A1C29] dark:bg-[#111112] text-white outline-none"
       />
     </form>
   );

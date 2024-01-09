@@ -14,7 +14,7 @@ function ImageTest({ images }: any) {
   return (
     <div className="overflow-hidden relative cursor-pointer" ref={emblaRef}>
       <div className="flex">
-        {images.map((each) => (
+        {images.map((each: any) => (
           <div key={each.id} className="flex-full min-w-0 relative">
             <Image
               key={each.id}
