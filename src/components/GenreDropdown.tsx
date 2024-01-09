@@ -24,7 +24,7 @@ async function GenreDropdown() {
         className="bg-transparent outline-none rounded-xl
        text-white h-full dark:text-white dark:bg-transparent"
       >
-        {data.genres.map((each) => (
+        {data.genres.map((each: any) => (
           <option
             key={each.id}
             value={each.name}

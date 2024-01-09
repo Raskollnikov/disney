@@ -23,7 +23,7 @@ export default function Carousel({ movies }: Props) {
       ref={emblaRef}
     >
       <div className="flex">
-        {movies.map((movie) => (
+        {movies.map((movie: any) => (
           <div key={movie.id} className="flex-full min-w-0 relative">
             <Image
               key={movie.id}

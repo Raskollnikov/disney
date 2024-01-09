@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import { SearchResults } from "../../types";
 
 async function fetchFromTMDB(url: URL, cacheTime?: number) {
@@ -121,7 +120,9 @@ export async function getVideos(id: any) {
     `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`
   );
   const data = await getTmdbId(url);
-  const filterTrailer = data.results.filter((each) => each.type === "Trailer"); // added to receive only Trailer
+  const filterTrailer = data.results.filter(
+    (each: any) => each.type === "Trailer"
+  );
   return filterTrailer;
 }
 
