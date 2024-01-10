@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Movie } from "../../types";
 import MovieCard from "./MovieCard";
 
@@ -29,9 +30,11 @@ export default function MoviesCarousel({ title, movies, isVertical }: Props) {
               >
                 <MovieCard movie={movie} />
                 <div className="max-w-2xl text-black dark:text-white">
-                  <p className="font-bold">
-                    {movie.title} ({movie.release_date?.split("-")[0]})
-                  </p>
+                  <Link href={`/about/${movie.id}`}>
+                    <p className="font-bold">
+                      {movie.title} ({movie.release_date?.split("-")[0]})
+                    </p>
+                  </Link>
                   <hr className="mb-3" />
                   <p className="">{movie.overview}</p>
                 </div>
