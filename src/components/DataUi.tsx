@@ -28,7 +28,7 @@ export default async function DataUi({ id }: IdType) {
       <div className="w-[90%] flex flex-col gap-5 justify-center p-4  ">
         <div className="flex w-full justify-between items-center">
           {" "}
-          <div className="text-3xl">
+          <div className="text-2xl md:text-3xl">
             <span>{original_title}</span> -
             <span>{release_date.slice(0, 4)}</span>{" "}
           </div>
