@@ -11,8 +11,10 @@ export const favoritesSlice = createSlice({
     addMovie: (state, action) => {
       state.movies.push(action.payload);
     },
-    removeItem: (state) => {
-      state.movies.pop();
+    removeItem: (state, action) => {
+      state.movies = state.movies.filter(
+        (movie) => movie.id !== action.payload
+      );
     },
     setFavoriteColor: (state, action) => {
       state.favoriteColor = action.payload;
