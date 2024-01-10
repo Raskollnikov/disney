@@ -12,21 +12,25 @@ const roboto = Roboto({
 
 export default function Favorite() {
   const store = useSelector((store: any) => store.favorite.movies);
-  const [isVertical, setIsVertical] = useState<boolean>(
-    window.innerWidth <= 767
+  const [isVertical, setIsVertical] = useState<boolean>(() =>
+    typeof window !== "undefined" ? window.innerWidth <= 767 : false
   );
 
   useEffect(() => {
     const handleResize = () => {
-      setIsVertical(window.innerWidth <= 767);
+      setIsVertical(
+        typeof window !== "undefined" ? window.innerWidth <= 767 : false
+      );
     };
 
-    window.addEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
 
   return (
     <div className="my-[100px] mx-5">
