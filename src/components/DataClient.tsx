@@ -30,7 +30,7 @@ function DataClient({ data }: { data: MovieType }) {
     if (color === "white") {
       dispatch(addMovie(data));
     } else if (color === "red") {
-      dispatch(removeItem());
+      dispatch(removeItem(data.id));
     }
   };
 
