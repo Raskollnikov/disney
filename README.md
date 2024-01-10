@@ -1,3 +1,5 @@
+Live Link: https://disneyclone-17oh25n9m-arsen-akhalaias-projects.vercel.app/ <br>
+deployment on vercel <3 <br>
 Next js / Typescript 
 
 One month ago, I embarked on a journey to enhance my web development skills. <br> I initiated this endeavor by creating a Netflix clone using React.js and JavaScript, incorporating Firebase for backend functionalities. <br> As I delved deeper into my learning, I felt the need to expand my toolkit and explore new technologies.<br>
@@ -9,3 +11,9 @@ The transition to TypeScript brought a new layer of type safety and clarity to m
 Through the process of building the Disney+ clone with Next.js and TypeScript,<br>
 I not only honed my skills in these technologies but also gained valuable insights <br> into creating scalable and efficient web applications.<br> This journey has been instrumental in my growth as a developer,<br> equipping me with a versatile skill set that I am eager to apply to future projects.<br>
 <br>
+Challenging Experience: This project was a challenging experience as it marked my first time using TypeScript with Next.js.<br> Despite the initial challenges, it became a significant milestone in my learning journey,<br> pushing me to explore new horizons in web development.
+
+
+
+
+
