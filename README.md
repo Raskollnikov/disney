@@ -1,4 +1,4 @@
-Live Link: https://disneyclone-17oh25n9m-arsen-akhalaias-projects.vercel.app/ <br>
+Live Link: https://disneyclone-ecru.vercel.app/ <br>
 deployment on vercel <3 <br>
 Next js / Typescript 
 
